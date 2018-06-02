@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package infra;
+
+// The Infragrpc service definition.
+service Infragrpc {
+  // Create infra
+  rpc Create (CreateParams) returns (CreateResp) {}
+
+  // Delete infra
+  rpc Delete (DeleteParams) returns (DeleteResp) {}
+  
+  // List infra
+  rpc List (ListParams) returns (ListResp) {}
+}
+
+// The request message containing the parameters for Create API
+message CreateParams {
+  string name = 1;
+}
+
+// The response message containing the Create response
+message CreateResp {
+  string providerID = 1;
+  string nodename = 2;
+  int32 error = 3;
+}
+
+// The request message containing the parameters for Delete API
+message DeleteParams {
+  string name = 1;
+}
+
+// The response message containing the Delete response
+message DeleteResp {
+  int32 error = 1;
+}
+
+// The request message containing the parameters for List API
+message ListParams {
+  string name = 1;
+}
+
+// The response message containing the List response
+message ListResp {
+  string message = 1;
+}
