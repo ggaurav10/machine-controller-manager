@@ -43,6 +43,16 @@ func (s *Server) List(ctx context.Context, in *pb.ListParams) (*pb.ListResp, err
 	}, nil
 }
 
+// ShareMeta takes metadata and caches
+func (s *Server) ShareMeta(ctx context.Context, in *pb.Metadata) (*pb.ErrorResp, error) {
+	log.Printf("Receive message %s", in.Type)
+	return &pb.ErrorResp{
+		Err:     0,
+		Message: "Cached",
+	}, nil
+
+}
+
 func main() {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {

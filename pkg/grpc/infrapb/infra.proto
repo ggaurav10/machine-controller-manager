@@ -12,6 +12,9 @@ service Infragrpc {
   
   // List infra
   rpc List (ListParams) returns (ListResp) {}
+
+  // Share Metadata
+  rpc ShareMeta(Metadata) returns (ErrorResp) {}
 }
 
 // The request message containing the parameters for Create API
@@ -44,4 +47,17 @@ message ListParams {
 // The response message containing the List response
 message ListResp {
   string message = 1;
+}
+
+// The request message containing metadata information
+message Metadata {
+  string type = 1;
+  string name = 2;
+  string data = 3;
+}
+
+// The response message containing error code and message
+message ErrorResp {
+  int32 err = 1;
+  string message = 2;
 }
